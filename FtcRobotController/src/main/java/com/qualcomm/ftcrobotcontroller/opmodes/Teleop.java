@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.Range;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.TouchSensor;
+import com.qualcomm.robotcore.hardware.Servo;
 
 
 public class Teleop extends OpMode{
@@ -30,6 +31,11 @@ public class Teleop extends OpMode{
     DcMotor motorRight;
     DcMotor motorLeft;
     DcMotor lift;
+    DcMotor intake;
+    Servo release;
+    Servo leftHook;
+    Servo rightHook;
+    Servo grabber;
 
     TouchSensor bottomTouch;
     TouchSensor topTouch;
@@ -75,6 +81,12 @@ public class Teleop extends OpMode{
         topTouch=hardwareMap.touchSensor.get("topTouch");
         bottomTouch=hardwareMap.touchSensor.get("bottomTouch");
         lift=hardwareMap.dcMotor.get("lift");
+        release=hardwareMap.servo.get("release");
+        leftHook=hardwareMap.servo.get("leftHook");
+        rightHook=hardwareMap.servo.get("rightHook");
+        grabber=hardwareMap.servo.get("grabber");
+        intake=hardwareMap.dcMotor.get("intake");
+
 
 
 
@@ -129,19 +141,20 @@ public class Teleop extends OpMode{
 
 
         // update the position of the claw
+        lift.setPower(0);
         if (gamepad1.x) {
 
         }
         if (gamepad1.y) {
-            while (!topTouch.isPressed()&&gamepad1.y  ) {
-                lift.setPower(1);
+            if (!topTouch.isPressed()&&gamepad1.y  ) {
+                lift.setPower(-1);
             }
 
 
         }
         if (gamepad1.a) {
-            while (!bottomTouch.isPressed()&&gamepad1.a) {
-                lift.setPower(-1);
+            if (!bottomTouch.isPressed()&&gamepad1.a) {
+                lift.setPower(1);
 
             }
         }
@@ -149,6 +162,12 @@ public class Teleop extends OpMode{
             if (gamepad1.b) {
 
             }
+        if(gamepad1.right_trigger==1){
+            intake.setPower(1);
+        }
+        if(gamepad1.left_trigger==1){
+            intake.setPower(-1);
+        }
 
             // clip the position values so that they never exceed their allowed range.
 
