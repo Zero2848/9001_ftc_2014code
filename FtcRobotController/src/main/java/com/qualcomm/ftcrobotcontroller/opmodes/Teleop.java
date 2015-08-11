@@ -1,8 +1,7 @@
 package com.qualcomm.ftcrobotcontroller.opmodes;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.hardware.IrSeekerSensor;
+
 
 import com.qualcomm.robotcore.util.Range;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -34,7 +33,7 @@ public class Teleop extends OpMode{
 
     TouchSensor bottomTouch;
     TouchSensor topTouch;
-    Servo release;
+
 
 
 
@@ -134,14 +133,14 @@ public class Teleop extends OpMode{
 
         }
         if (gamepad1.y) {
-            while (!topTouch.isPressed()  ) {
+            while (!topTouch.isPressed()&&gamepad1.y  ) {
                 lift.setPower(1);
             }
 
 
         }
         if (gamepad1.a) {
-            if (!bottomTouch.isPressed()) {
+            while (!bottomTouch.isPressed()&&gamepad1.a) {
                 lift.setPower(-1);
 
             }
