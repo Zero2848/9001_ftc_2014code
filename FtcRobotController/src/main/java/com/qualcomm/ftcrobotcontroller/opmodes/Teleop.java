@@ -33,6 +33,7 @@ public class Teleop extends OpMode{
 
     TouchSensor bottomTouch;
     TouchSensor topTouch;
+    Servo release;
 
 
 
@@ -74,6 +75,7 @@ public class Teleop extends OpMode{
         topTouch=hardwareMap.touchSensor.get("topTouch");
         bottomTouch=hardwareMap.touchSensor.get("bottomTouch");
         lift=hardwareMap.dcMotor.get("lift");
+        
 
 
 
