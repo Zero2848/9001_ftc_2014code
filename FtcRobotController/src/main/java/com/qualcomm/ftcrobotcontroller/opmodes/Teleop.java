@@ -2,6 +2,7 @@ package com.qualcomm.ftcrobotcontroller.opmodes;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.IrSeekerSensor;
 
 import com.qualcomm.robotcore.util.Range;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -75,7 +76,7 @@ public class Teleop extends OpMode{
         topTouch=hardwareMap.touchSensor.get("topTouch");
         bottomTouch=hardwareMap.touchSensor.get("bottomTouch");
         lift=hardwareMap.dcMotor.get("lift");
-        
+
 
 
 
