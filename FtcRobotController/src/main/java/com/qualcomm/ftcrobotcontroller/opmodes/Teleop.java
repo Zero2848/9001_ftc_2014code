@@ -118,8 +118,8 @@ public class Teleop extends OpMode{
         // 1 is full down
         // direction: left_stick_x ranges from -1 to 1, where -1 is full left
         // and 1 is full right
-        float throttle = -gamepad1.left_stick_y;
-        float direction = gamepad1.left_stick_x;
+        float throttle = gamepad1.left_stick_y;
+        float direction = -gamepad1.left_stick_x;
         float right = throttle - direction;
         float left = throttle + direction;
 
@@ -142,6 +142,8 @@ public class Teleop extends OpMode{
 
         // update the position of the claw
         lift.setPower(0);
+        intake.setPower(0);
+
         if (gamepad1.x) {
 
         }
@@ -165,6 +167,7 @@ public class Teleop extends OpMode{
         if(gamepad1.right_trigger==1){
             intake.setPower(1);
         }
+
         if(gamepad1.left_trigger==1){
             intake.setPower(-1);
         }
